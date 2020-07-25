@@ -34,4 +34,3 @@
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "instructor_id")//связь с инструктором по этой колонке
     private Instructor instructor;
-

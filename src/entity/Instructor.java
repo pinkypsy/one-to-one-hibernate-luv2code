@@ -26,10 +26,6 @@ public class Instructor {
     @OneToOne(cascade = CascadeType.ALL)
     private InstructorDetail instructorDetail;
 
-    @OneToMany(mappedBy = "instructor",
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    private List<Course> courses;
-
     public Instructor() {
     }
 
@@ -91,23 +87,4 @@ public class Instructor {
                 '}';
     }
 
-    public List<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
-    }
-
-    public void addCourse(Course tempCourse){
-
-        if (courses == null){
-            courses = new ArrayList<>();
-        }
-
-        courses.add(tempCourse);
-
-        //shake hands and say "hey, we're nice and we like to play well together"
-        tempCourse.setInstructor(this);
-    }
-}
+   }

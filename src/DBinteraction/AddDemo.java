@@ -1,16 +1,12 @@
 package DBinteraction;
 
-import entity.Course;
 import entity.Instructor;
 import entity.InstructorDetail;
-import entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.text.ParseException;
-
-import static utils.DateUtils.parseDate;
 
 public class AddDemo {
     public static void main(String[] args) throws ParseException {
@@ -19,7 +15,6 @@ public class AddDemo {
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Instructor.class)
                 .addAnnotatedClass(InstructorDetail.class)
-                .addAnnotatedClass(Course.class)
                 .buildSessionFactory();
 
         Session session = sessionFactory.getCurrentSession();
