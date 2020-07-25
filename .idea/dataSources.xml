@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="hb-01-one-to-one-uni@localhost" uuid="0aaaf3b6-c7e6-4976-b7c6-1b865bf17040">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/hb-01-one-to-one-uni</jdbc-url>
+      <driver-properties>
+        <property name="serverTimezone" value="GMT+3" />
+      </driver-properties>
+    </data-source>
+  </component>
+</project>
