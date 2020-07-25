@@ -1,4 +1,16 @@
-1. Чтобы удалить только из одной таблицы при bidirectional нужно в этой таблице в аннотации над связывающим обьектом
-перечислить все каскады кроме REMOVE, а непосредственно перед удалением нужно убрать ассоциацию между связанными таблицами:
-instructorDetailToDelete.getInstructor().setInstructorDetail(null);
+1. Для создания unidirectional связи нужно инжектировать в класс первой таблицы обьект второй таблицы и пометить его аннотациями с
+указанием на foreignKey
+    @JoinColumn(name = "instructor_detail_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    private InstructorDetail instructorDetail;
+Также перед работой с таблицей нужно их связать в классе где с ними идет работа:
+    instructor.setInstructorDetail(instructorDetail);
+
+2. Для создания bidirectional связи нужно кроме действия в п.1 инжектировать в класс второй таблицы обьект первой таблицы с аннотациями
+    @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)//refers to instructorDetail property in Instructor class
+    private Instructor instructor;
+
+3. Чтобы удалить только из одной таблицы при bidirectional нужно в этой таблице в аннотации над связывающим обьектом
+перечислить все каскады кроме REMOVE, а непосредственно перед ремувом нужно удалить ассоциированную ссылку на объект:
+    instructorDetailToDelete.getInstructor().setInstructorDetail(null);
 

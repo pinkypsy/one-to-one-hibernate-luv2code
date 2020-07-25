@@ -24,12 +24,13 @@ public class DeleteDemo {
 
             session.beginTransaction();
 
-            int theId = 4;
+            int theId = 11;
             Instructor instructorToDelete = session.get(Instructor.class,theId);
 
             if (instructorToDelete != null){
                 session.delete(instructorToDelete);
-            }
+            }else System.out.println("*No such ID*");
+
 
             session.getTransaction().commit();
 
@@ -37,6 +38,7 @@ public class DeleteDemo {
 
         }finally {
             session.close();
+            sessionFactory.close();
         }
 
 

@@ -30,7 +30,7 @@ public class AddDemo {
             InstructorDetail instructorDetail =
                     new InstructorDetail("youtube.com/luv", "coding");*/
             Instructor instructor =
-                    new Instructor("Banana", "Bam", "banana@luv2code.com");
+                    new Instructor("Banana1", "Bam", "banana@luv2code.com");
 
             InstructorDetail instructorDetail =
                     new InstructorDetail("youtube.com/banana", "banana");
@@ -45,6 +45,7 @@ public class AddDemo {
 
         }finally {
             session.close();
+            sessionFactory.close();
         }
 
 

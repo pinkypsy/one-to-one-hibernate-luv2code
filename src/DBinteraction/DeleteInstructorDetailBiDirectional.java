@@ -25,18 +25,18 @@ public class DeleteInstructorDetailBiDirectional {
 
         session.beginTransaction();
 
-        int theId = 2;
+        int theId = 10;
         InstructorDetail instructorDetailToDelete = session.get(InstructorDetail.class,theId);
 
         if (instructorDetailToDelete != null){
 
-            /*//remove deleted object from associations; break bidirectional chain
-            instructorDetailToDelete.getInstructor().setInstructorDetail(null);*/
+            //remove deleted object from associations; break bidirectional chain
+//            instructorDetailToDelete.getInstructor().setInstructorDetail(null);
 
             session.delete(instructorDetailToDelete);
             System.out.println("Deleting " + instructorDetailToDelete.getInstructor() + "...");
             System.out.println("Deleting " + instructorDetailToDelete + "...");
-        }
+        }else System.out.println("*No such ID*");
 
         session.getTransaction().commit();
 
@@ -44,6 +44,7 @@ public class DeleteInstructorDetailBiDirectional {
 
     }finally {
         session.close();
+        sessionFactory.close();
     }
 }
 }

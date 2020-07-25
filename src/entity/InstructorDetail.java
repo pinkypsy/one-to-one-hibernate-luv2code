@@ -17,14 +17,14 @@ public class InstructorDetail {
     @Column(name = "hobby")
     private String hobby;
 
+    /* //for deleting ONLY FROM InstructorDetail
+ @OneToOne(mappedBy = "instructorDetail", cascade = {CascadeType.DETACH,
+                                                     CascadeType.MERGE,
+                                                     CascadeType.REFRESH,
+                                                     CascadeType.PERSIST})*/
+
     @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)//refers to instructorDetail property
     // in Instructor class
-
-   /* //for deleting ONLY FROM InstructorDetail
-    @OneToOne(mappedBy = "instructorDetail", cascade = {CascadeType.DETACH,
-                                                        CascadeType.MERGE,
-                                                        CascadeType.REFRESH,
-                                                        CascadeType.PERSIST})*/
     private Instructor instructor;
 
     public InstructorDetail() {
