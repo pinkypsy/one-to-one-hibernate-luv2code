@@ -3,16 +3,13 @@ package DBinteraction;
 import entity.Course;
 import entity.Instructor;
 import entity.InstructorDetail;
-import entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.text.ParseException;
 
-import static utils.DateUtils.parseDate;
-
-public class AddDemo {
+public class DeleteCourse {
     public static void main(String[] args) throws ParseException {
 
         SessionFactory sessionFactory = new Configuration()
@@ -25,22 +22,17 @@ public class AddDemo {
         Session session = sessionFactory.getCurrentSession();
 
         try {
-            System.out.println("Creating new Instructor object");
-           /* Instructor instructor =
-                    new Instructor("Chad", "Derby", "chad@luv2code.com");
-
-            InstructorDetail instructorDetail =
-                    new InstructorDetail("youtube.com/luv", "coding");*/
-            Instructor instructor =
-                    new Instructor("Mango", "Jerry", "darby@luv2code.com");
-
-            InstructorDetail instructorDetail =
-                    new InstructorDetail("youtube.com/luv2code", "code");
-
-            instructor.setInstructorDetail(instructorDetail);
+            System.out.println("Deleting Course object");
 
             session.beginTransaction();
-            session.save(instructor);
+
+            int theId = 10;
+            Course courseToDelete = session.get(Course.class,theId);
+
+            if (courseToDelete != null){
+                session.delete(courseToDelete);
+            }else System.out.println("*No such ID*");
+
             session.getTransaction().commit();
 
             System.out.println("Done!");

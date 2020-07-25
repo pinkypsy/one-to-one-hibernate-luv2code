@@ -3,16 +3,13 @@ package DBinteraction;
 import entity.Course;
 import entity.Instructor;
 import entity.InstructorDetail;
-import entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.text.ParseException;
 
-import static utils.DateUtils.parseDate;
-
-public class AddDemo {
+public class AddCourse {
     public static void main(String[] args) throws ParseException {
 
         SessionFactory sessionFactory = new Configuration()
@@ -25,22 +22,23 @@ public class AddDemo {
         Session session = sessionFactory.getCurrentSession();
 
         try {
-            System.out.println("Creating new Instructor object");
-           /* Instructor instructor =
-                    new Instructor("Chad", "Derby", "chad@luv2code.com");
-
-            InstructorDetail instructorDetail =
-                    new InstructorDetail("youtube.com/luv", "coding");*/
-            Instructor instructor =
-                    new Instructor("Mango", "Jerry", "darby@luv2code.com");
-
-            InstructorDetail instructorDetail =
-                    new InstructorDetail("youtube.com/luv2code", "code");
-
-            instructor.setInstructorDetail(instructorDetail);
+            int theId = 1;
 
             session.beginTransaction();
-            session.save(instructor);
+
+            Instructor tempInstructor = session.get(Instructor.class,theId);
+
+            Course tempCourse1 = new Course("Air Guitar");
+            Course tempCourse2 = new Course("Sushi Sticks Master");
+
+            tempInstructor.addCourse(tempCourse1);
+            tempInstructor.addCourse(tempCourse2);
+
+
+            System.out.println("Save courses...");
+            session.save(tempCourse1);
+            session.save(tempCourse2);
+
             session.getTransaction().commit();
 
             System.out.println("Done!");
